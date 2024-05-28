@@ -5,6 +5,11 @@ print("In its current form, the Python calculator can handle whole numbers & dec
 print("If a user input is anything other than a number, the program will result in an error.")
 
 
+# Import needed modules
+
+import sys
+
+
 # Defining the user's global answer
 
 globalAnswer = 0
@@ -20,7 +25,8 @@ def startCalculator():
     print("2 = Subtract")
     print("3 = Multiply")
     print("4 = Divide")
-    print("5 = Exit the calculator")
+    print("5 = Exponent")
+    print("6 = Exit the calculator")
     print(" ")
     select = int(input("Which operation would you like to use?"))
     if select == 1:
@@ -52,7 +58,14 @@ def startCalculator():
         print(" ")
         print(str(num_1) + " / " + str(num_2) + " = " + str(answer))
     elif select == 5:
-        raise ValueError("You have chosen to exit the calculator. Goodbye!")
+        num_1 = float(input("Enter first number: "))
+        num_2 = float(input("Enter the number you would like to raise " + str(num_1) + " to:"))
+        answer = num_1 ** num_2
+        globalAnswer = answer
+        print(" ")
+        print(str(num_1) + " raised to the power of " + str(num_2) + " + " + str(answer))
+    elif select == 6:
+        sys.exit("You have chosen to exit the calculator. Goodbye!")
     else:
         print(" ")
         print("Human, please note that " + str(select) + " is not a valid choice.")
@@ -71,7 +84,8 @@ def additionalCalculations():
     print("2 = Subtract a number from " + str(globalAnswer))
     print("3 = Multiply a number by " + str(globalAnswer))
     print("4 = Divide a number by " + str(globalAnswer))
-    print("5 = Exit the calculator")
+    print("5 = Raise " + str(globalAnswer) + " to the power of a number")
+    print("6 = Exit the calculator")
     print(" ")
     select = int(input("Which operation would you like to use?"))
     if select == 1:
@@ -99,7 +113,13 @@ def additionalCalculations():
         print(str(globalAnswer) + " / " + str(num1) + " = " + str(answer))
         globalAnswer = answer
     elif select == 5:
-        raise ValueError("You have chosen to exit the calculator. Goodbye!")
+        num1 = float(input("Enter the number you would like to raise " + str(globalAnswer) + " to:"))
+        answer = globalAnswer ** num1
+        print(" ")
+        print(str(globalAnswer) + " raised to the power of " + str(num1) + " = " + str(answer))
+        globalAnswer = answer
+    elif select == 6:
+        sys.exit("You have chosen to exit the calculator. Goodbye!")
     else:
         print(" ")
         print("Human, please note that " + str(select) + " is not a valid choice.")
